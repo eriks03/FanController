@@ -48,14 +48,11 @@ architecture stimuli of controller_tb is
   constant input_bit_width : integer := 10; 
 
   -- component ports
-  signal clk     : std_logic;
+  signal clk_sig     : std_logic := '1';
   signal reset   : std_logic;
   signal temp_in : integer range 0 to 2**input_bit_width - 1;
   signal cs      : std_logic;
   signal pwm_out : std_logic; 
-
-  -- clock
-  signal Clk : std_logic := '1';
 
 begin  -- stimuli
 
@@ -64,14 +61,14 @@ begin  -- stimuli
     generic map (
       input_bit_width => input_bit_width)
     port map (
-      clk     => clk,
+      clk     => clk_sig,
       reset   => reset,
       temp_in => temp_in,
       cs      => cs,
       pwm_out => pwm_out);
 
   -- clock generation
-  Clk <= not Clk after 10 ns;
+  clk_sig <= not clk_sig after 10 ns;
 
   -- waveform generation
   WaveGen_Proc: process
