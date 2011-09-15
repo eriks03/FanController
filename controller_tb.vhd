@@ -19,6 +19,17 @@
 -- 2011-09-15  1.0      eriks	Created
 -------------------------------------------------------------------------------
 
+-------------------------------------------------------------------------------
+library ieee;
+use ieee.std_logic_1164.all;
+
+-------------------------------------------------------------------------------
+
+entity controller_tb is
+
+end controller_tb;
+
+-------------------------------------------------------------------------------
 
 architecture stimuli of controller_tb is
 
@@ -66,8 +77,11 @@ begin  -- stimuli
   WaveGen_Proc: process
   begin
     -- insert signal assignments here
-
-    wait until Clk = '1';
+    reset <= '1';
+    wait for 30 ns;
+    reset <= '0';
+    wait for 30 ns;
+   -- wait until Clk = '1';
   end process WaveGen_Proc;
 
   
@@ -80,15 +94,5 @@ configuration controller_tb_stimuli_cfg of controller_tb is
   for stimuli
   end for;
 end controller_tb_stimuli_cfg;
-
--------------------------------------------------------------------------------
-library ieee;
-use ieee.std_logic_1164.all;
-
--------------------------------------------------------------------------------
-
-entity controller_tb is
-
-end controller_tb;
 
 -------------------------------------------------------------------------------
