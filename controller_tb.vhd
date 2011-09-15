@@ -77,7 +77,7 @@ begin  -- stimuli
     reset <= '1';
     wait for 30 ns;
     reset <= '0';
-    wait for 30 ns;
+    wait;
    -- wait until Clk = '1';
   end process WaveGen_Proc;
 
